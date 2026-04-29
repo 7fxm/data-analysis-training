@@ -57,11 +57,6 @@ export function ProjectGrid() {
                     <span className={`text-xs font-medium px-2 py-1 rounded-lg ${levelStyle.bg} ${levelStyle.text} border ${levelStyle.border}`}>
                       {project.level}
                     </span>
-                    {isCompleted && (
-                      <span className="text-xs font-medium text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-900/30 px-2 py-1 rounded-lg">
-                        已完成
-                      </span>
-                    )}
                   </div>
                   
                   <h3 className="font-bold text-lg text-primary-700 dark:text-primary-400 mb-2 group-hover:text-primary-600 dark:group-hover:text-primary-300 transition-colors">
