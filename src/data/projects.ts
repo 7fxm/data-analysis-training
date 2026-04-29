@@ -38,6 +38,14 @@ export const projects: Project[] = [
 import io
 
 # 预置演示数据（模拟CSV文件内容）
+# 字段说明：
+# - order_id: 订单编号
+# - product_id: 产品编号
+# - quantity: 购买数量
+# - unit_price: 单价
+# - order_date: 订单日期
+# - customer_id: 客户编号
+# - region: 地区（中国七大地理分区：华东、华北、华南、华中、西北、西南、东北）
 data = '''order_id,product_id,quantity,unit_price,order_date,customer_id,region
 ORD001,P001,2,50.0,2024-01-01,C001,华东
 ORD002,P002,1,100.0,2024-01-02,C002,华北

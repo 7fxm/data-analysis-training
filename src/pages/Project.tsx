@@ -1,5 +1,5 @@
 import { useParams, Link } from 'react-router-dom';
-import { FileText, Play } from 'lucide-react';
+import { FileText, Play, ArrowLeft } from 'lucide-react';
 import { projects } from '@/data/projects';
 import { ProjectIntro } from '@/components/project/ProjectIntro';
 import { CodeEditor } from '@/components/project/CodeEditor';
@@ -46,6 +46,11 @@ export function Project() {
   return (
     <div className="py-8">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <Link to="/" className="inline-flex items-center gap-2 text-primary-600 dark:text-primary-400 hover:text-primary-700 dark:hover:text-primary-300 mb-6 transition-colors">
+          <ArrowLeft className="w-5 h-5" />
+          <span>返回首页</span>
+        </Link>
+        
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           <div className="lg:col-span-2 space-y-6">
             <ProjectIntro project={project} />
