@@ -50,12 +50,15 @@ export function ProjectGrid() {
                 <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-primary-500 to-accent-500" />
                 
                 <div className="p-5">
-                  <div className="flex items-center justify-between mb-3">
-                    <span className={`text-xs font-semibold px-2.5 py-1 rounded-full ${levelStyle.bg} ${levelStyle.text} border ${levelStyle.border}`}>
+                  <div className="flex items-center gap-2 mb-3">
+                    <span className="text-xs font-bold text-white bg-gradient-to-r from-primary-500 to-accent-500 px-2 py-1 rounded-lg shadow-sm">
+                      项目{String(project.id).padStart(2, '0')}
+                    </span>
+                    <span className={`text-xs font-medium px-2 py-1 rounded-lg ${levelStyle.bg} ${levelStyle.text} border ${levelStyle.border}`}>
                       {project.level}
                     </span>
                     {isCompleted && (
-                      <span className="text-xs font-medium text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-900/30 px-2 py-0.5 rounded-full">
+                      <span className="text-xs font-medium text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-900/30 px-2 py-1 rounded-lg">
                         已完成
                       </span>
                     )}
