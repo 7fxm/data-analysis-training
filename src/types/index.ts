@@ -18,6 +18,8 @@ export interface Project {
   tasks: string[];
   knowledgePoints: string[];
   commonMistakes: string[];
+  level: '入门' | '进阶' | '实战';
+  tools: string[];
 }
 
 export interface UserProgress {

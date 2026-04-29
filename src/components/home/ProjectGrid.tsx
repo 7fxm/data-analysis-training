@@ -1,15 +1,25 @@
 import { Link } from 'react-router-dom';
-import { CheckCircle, Clock, Code, FileText } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import { projects } from '@/data/projects';
 import { useAppStore } from '@/context/AppContext';
 
-const projectColors = [
-  { gradient: 'from-blue-500 to-cyan-500', shadow: 'shadow-blue-500/20', bg: 'bg-blue-50', text: 'text-blue-600' },
-  { gradient: 'from-emerald-500 to-teal-500', shadow: 'shadow-emerald-500/20', bg: 'bg-emerald-50', text: 'text-emerald-600' },
-  { gradient: 'from-violet-500 to-purple-500', shadow: 'shadow-violet-500/20', bg: 'bg-violet-50', text: 'text-violet-600' },
-  { gradient: 'from-primary-500 to-accent-500', shadow: 'shadow-primary-500/20', bg: 'bg-primary-50', text: 'text-primary-600' },
-  { gradient: 'from-rose-500 to-pink-500', shadow: 'shadow-rose-500/20', bg: 'bg-rose-50', text: 'text-rose-600' },
-];
+const levelStyles = {
+  '入门': {
+    bg: 'bg-primary-50 dark:bg-primary-900/30',
+    text: 'text-primary-600 dark:text-primary-400',
+    border: 'border-primary-200 dark:border-primary-700'
+  },
+  '进阶': {
+    bg: 'bg-accent-50 dark:bg-accent-900/30',
+    text: 'text-accent-600 dark:text-accent-400',
+    border: 'border-accent-200 dark:border-accent-700'
+  },
+  '实战': {
+    bg: 'bg-gradient-to-r from-primary-50 to-accent-50 dark:from-primary-900/30 dark:to-accent-900/30',
+    text: 'text-primary-700 dark:text-primary-300',
+    border: 'border-primary-200 dark:border-primary-700'
+  }
+};
 
 export function ProjectGrid() {
   const getProgress = useAppStore((state) => state.getProgress);
@@ -18,75 +28,67 @@ export function ProjectGrid() {
     <section className="py-20 relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold text-surface-800 mb-4">项目中心</h2>
-          <p className="text-surface-500 max-w-2xl mx-auto">
-            通过10个实战项目，在实践中掌握数据分析技能
+          <h2 className="text-3xl font-bold text-primary-700 dark:text-primary-400 mb-4">
+            实战项目中心
+          </h2>
+          <p className="text-surface-500 dark:text-surface-400 max-w-2xl mx-auto">
+            从0到1练会数据分析，拿得出手的项目作品集
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-5">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {projects.map((project) => {
             const progress = getProgress(project.id);
             const isCompleted = progress?.codeCompleted;
-            const colorIndex = (project.id - 1) % projectColors.length;
-            const color = projectColors[colorIndex];
+            const levelStyle = levelStyles[project.level];
 
             return (
-              <Link
+              <div
                 key={project.id}
-                to={`/project/${project.id}`}
-                className="group relative bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden hover-lift"
+                className="group relative bg-white dark:bg-surface-800 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden border border-surface-100 dark:border-surface-700 hover:-translate-y-1"
               >
-                <div className={`absolute top-0 left-0 right-0 h-1 bg-gradient-to-r ${color.gradient}`} />
+                <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-primary-500 to-accent-500" />
                 
                 <div className="p-5">
                   <div className="flex items-center justify-between mb-3">
-                    <span className={`text-xs font-bold ${color.text} ${color.bg} px-2.5 py-1 rounded-full`}>
-                      项目{String(project.id).padStart(2, '0')}
+                    <span className={`text-xs font-semibold px-2.5 py-1 rounded-full ${levelStyle.bg} ${levelStyle.text} border ${levelStyle.border}`}>
+                      {project.level}
                     </span>
                     {isCompleted && (
-                      <div className="p-1.5 rounded-full bg-emerald-100">
-                        <CheckCircle className="w-4 h-4 text-emerald-500" />
-                      </div>
+                      <span className="text-xs font-medium text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-900/30 px-2 py-0.5 rounded-full">
+                        已完成
+                      </span>
                     )}
                   </div>
                   
-                  <h3 className="font-bold text-surface-800 mb-2 group-hover:text-primary-600 transition-colors">
+                  <h3 className="font-bold text-lg text-primary-700 dark:text-primary-400 mb-2 group-hover:text-primary-600 dark:group-hover:text-primary-300 transition-colors">
                     {project.title}
                   </h3>
                   
-                  <p className="text-sm text-surface-500 mb-4 line-clamp-2">
+                  <p className="text-sm text-surface-500 dark:text-surface-400 mb-4 line-clamp-2">
                     {project.description}
                   </p>
                   
                   <div className="flex flex-wrap gap-1.5 mb-4">
-                    {project.coreSkills.slice(0, 2).map((skill, i) => (
+                    {project.tools.map((tool, i) => (
                       <span
                         key={i}
-                        className={`text-xs ${color.bg} ${color.text} px-2 py-0.5 rounded-md font-medium`}
+                        className="text-xs bg-surface-100 dark:bg-surface-700 text-surface-600 dark:text-surface-300 px-2 py-0.5 rounded-md font-medium"
                       >
-                        {skill}
+                        {tool}
                       </span>
                     ))}
-                    {project.coreSkills.length > 2 && (
-                      <span className="text-xs bg-surface-100 text-surface-500 px-2 py-0.5 rounded-md">
-                        +{project.coreSkills.length - 2}
-                      </span>
-                    )}
                   </div>
                   
-                  <div className="flex items-center gap-4 text-xs text-surface-400">
-                    <span className="flex items-center gap-1">
-                      <Code className="w-3.5 h-3.5" />
-                      练习
-                    </span>
-                    <span className="flex items-center gap-1">
-                      <FileText className="w-3.5 h-3.5" />
-                      测试
-                    </span>
-                  </div>
+                  <Link
+                    to={`/project/${project.id}`}
+                    className="flex items-center justify-center gap-2 w-full py-2.5 px-4 rounded-xl font-medium text-sm transition-all duration-300 bg-gradient-to-r from-primary-500 to-primary-600 hover:from-primary-600 hover:to-primary-700 text-white shadow-lg shadow-primary-500/25 hover:shadow-primary-500/40"
+                  >
+                    查看项目
+                    <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                  </Link>
                 </div>
-              </Link>
+              </div>
             );
           })}
         </div>

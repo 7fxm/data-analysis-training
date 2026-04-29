@@ -4,7 +4,7 @@ export const projects: Project[] = [
   {
     id: 1,
     title: '数据清洗基础',
-    description: '处理缺失值、异常值，格式化时间列，计算总价',
+    description: '处理缺失值、异常值，格式化时间列，掌握数据预处理全流程',
     coreSkills: ['缺失值处理', '异常值检测', '时间格式化', '数据类型转换'],
     dataset: 'retail_orders.csv',
     learningGoals: [
@@ -32,6 +32,8 @@ export const projects: Project[] = [
       '时间格式化时注意时区问题',
       '计算总价时注意数据类型转换'
     ],
+    level: '入门',
+    tools: ['Python', 'Pandas'],
     codeTemplate: `import pandas as pd
 
 # 加载数据
@@ -61,7 +63,7 @@ print('数据清洗完成！')`
   {
     id: 2,
     title: '销售数据分组聚合',
-    description: '使用groupby进行数据分组，掌握多字段聚合分析',
+    description: '使用groupby进行数据分组，掌握多字段聚合分析方法',
     coreSkills: ['groupby分组', 'agg聚合', '多字段分组', '数据透视'],
     dataset: 'retail_orders.csv',
     learningGoals: [
@@ -89,6 +91,8 @@ print('数据清洗完成！')`
       '多字段分组注意顺序',
       '透视表的行列设置要合理'
     ],
+    level: '入门',
+    tools: ['Python', 'Pandas'],
     codeTemplate: `import pandas as pd
 
 # 加载数据
@@ -119,7 +123,7 @@ print(pivot)`
   {
     id: 3,
     title: '购物篮分析',
-    description: '使用关联规则挖掘产品组合，发现购买模式',
+    description: '使用关联规则挖掘产品组合，发现顾客购买模式与商品关联',
     coreSkills: ['关联规则', 'Apriori算法', '支持度', '置信度'],
     dataset: 'market_basket.csv',
     learningGoals: [
@@ -147,6 +151,8 @@ print(pivot)`
       '置信度高不代表因果关系',
       '注意规则的实用性'
     ],
+    level: '进阶',
+    tools: ['Python', 'Pandas', 'Mlxtend'],
     codeTemplate: `import pandas as pd
 from mlxtend.frequent_patterns import apriori, association_rules
 
@@ -171,7 +177,7 @@ print(rules.head())`
   {
     id: 4,
     title: '客户聚类分析',
-    description: '使用K-means对客户进行分群，识别客户群体特征',
+    description: '使用K-means对客户进行分群，识别不同价值客户群体特征',
     coreSkills: ['K-means聚类', '特征选择', '聚类评估', '客户分群'],
     dataset: 'user_logs.csv',
     learningGoals: [
@@ -199,6 +205,8 @@ print(rules.head())`
       '异常值会影响聚类结果',
       '聚类结果需要业务解读'
     ],
+    level: '进阶',
+    tools: ['Python', 'Pandas', 'Scikit-learn'],
     codeTemplate: `import pandas as pd
 from sklearn.cluster import KMeans
 from sklearn.preprocessing import StandardScaler
@@ -231,7 +239,7 @@ print(df.groupby('cluster').mean())`
   {
     id: 5,
     title: '销售数据可视化',
-    description: '使用matplotlib创建专业图表，展示数据洞察',
+    description: '使用matplotlib创建专业图表，直观展示数据洞察与趋势',
     coreSkills: ['matplotlib绑图', '趋势图', '分布图', '图表美化'],
     dataset: 'retail_orders.csv',
     learningGoals: [
@@ -259,6 +267,8 @@ print(df.groupby('cluster').mean())`
       '颜色选择要考虑色盲友好',
       '图表尺寸要适合展示'
     ],
+    level: '入门',
+    tools: ['Python', 'Matplotlib', 'Pandas'],
     codeTemplate: `import pandas as pd
 import matplotlib.pyplot as plt
 
@@ -290,7 +300,7 @@ plt.show()`
   {
     id: 6,
     title: 'A/B测试分析',
-    description: '设计并分析A/B测试，评估实验效果显著性',
+    description: '设计并分析A/B测试实验，用统计方法评估产品改版效果',
     coreSkills: ['假设检验', '显著性判断', 'p值计算', '效果评估'],
     dataset: 'ab_test.csv',
     learningGoals: [
@@ -318,6 +328,8 @@ plt.show()`
       '显著性不代表实际意义',
       '要考虑业务背景'
     ],
+    level: '进阶',
+    tools: ['Python', 'Pandas', 'Scipy'],
     codeTemplate: `import pandas as pd
 from scipy import stats
 import numpy as np
@@ -348,7 +360,7 @@ else:
   {
     id: 7,
     title: '时间序列分析',
-    description: '使用ARIMA模型进行时间序列预测',
+    description: '使用ARIMA模型进行销售预测，掌握时间序列分析方法',
     coreSkills: ['时间序列', 'ARIMA模型', '趋势预测', '季节性分析'],
     dataset: 'retail_orders.csv',
     learningGoals: [
@@ -376,6 +388,8 @@ else:
       '参数选择要合理',
       '预测区间要给出置信度'
     ],
+    level: '实战',
+    tools: ['Python', 'Pandas', 'Statsmodels'],
     codeTemplate: `import pandas as pd
 from statsmodels.tsa.arima.model import ARIMA
 import matplotlib.pyplot as plt
@@ -406,7 +420,7 @@ plt.show()`
   {
     id: 8,
     title: '特征工程',
-    description: '进行特征选择和特征变换，提升模型性能',
+    description: '进行特征选择和特征变换，提升机器学习模型性能',
     coreSkills: ['特征选择', '特征变换', '特征构造', '数据标准化'],
     dataset: 'user_logs.csv',
     learningGoals: [
@@ -434,6 +448,8 @@ plt.show()`
       '特征选择要结合业务',
       '变换要可逆'
     ],
+    level: '实战',
+    tools: ['Python', 'Pandas', 'Scikit-learn'],
     codeTemplate: `import pandas as pd
 from sklearn.preprocessing import StandardScaler, MinMaxScaler
 from sklearn.feature_selection import SelectKBest, f_classif
@@ -463,7 +479,7 @@ print('特征得分:', selector.scores_)`
   {
     id: 9,
     title: '异常值检测',
-    description: '使用多种方法检测数据中的异常值',
+    description: '使用多种方法检测数据异常，识别潜在风险与机会',
     coreSkills: ['IQR方法', 'Z-score', '孤立森林', '异常处理'],
     dataset: 'retail_orders.csv',
     learningGoals: [
@@ -491,6 +507,8 @@ print('特征得分:', selector.scores_)`
       '要结合业务判断',
       '删除异常值要谨慎'
     ],
+    level: '实战',
+    tools: ['Python', 'Pandas', 'Scikit-learn'],
     codeTemplate: `import pandas as pd
 import numpy as np
 from sklearn.ensemble import IsolationForest
@@ -524,7 +542,7 @@ print(f'孤立森林检测到异常值: {len(outliers_iso)}')`
   {
     id: 10,
     title: '多数据集合并',
-    description: '使用merge和concat合并多个数据源',
+    description: '使用merge和concat整合多源数据，构建完整分析视图',
     coreSkills: ['merge合并', 'concat拼接', '数据整合', '连接类型'],
     dataset: 'retail_orders.csv, user_logs.csv',
     learningGoals: [
@@ -552,6 +570,8 @@ print(f'孤立森林检测到异常值: {len(outliers_iso)}')`
       '合并后检查数据量',
       '处理重复列名'
     ],
+    level: '入门',
+    tools: ['Python', 'Pandas'],
     codeTemplate: `import pandas as pd
 
 # 加载数据

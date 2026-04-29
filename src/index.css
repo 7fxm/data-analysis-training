@@ -27,6 +27,15 @@
       radial-gradient(at 100% 100%, rgba(14, 165, 233, 0.05) 0px, transparent 50%);
     background-attachment: fixed;
   }
+
+  .dark body {
+    background-color: #18181b;
+    color: #fafafa;
+    background-image: 
+      radial-gradient(at 0% 0%, rgba(14, 165, 233, 0.15) 0px, transparent 50%),
+      radial-gradient(at 100% 0%, rgba(217, 70, 239, 0.15) 0px, transparent 50%),
+      radial-gradient(at 100% 100%, rgba(14, 165, 233, 0.1) 0px, transparent 50%);
+  }
 }
 
 @layer components {
@@ -42,6 +51,11 @@
     backdrop-filter: blur(12px);
     border: 1px solid rgba(255, 255, 255, 0.2);
     box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  }
+
+  .dark .glass-card {
+    background-color: rgba(39, 39, 42, 0.8);
+    border: 1px solid rgba(63, 63, 70, 0.5);
   }
   
   .gradient-text {
@@ -94,6 +108,10 @@
     font-size: 0.875rem;
     font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
   }
+
+  .dark .prose code {
+    background-color: #3f3f46;
+  }
   
   .prose h2 {
     font-size: 1.125rem;
@@ -102,12 +120,20 @@
     margin-top: 1rem;
     margin-bottom: 0.5rem;
   }
+
+  .dark .prose h2 {
+    color: #fafafa;
+  }
   
   .prose h3 {
     font-weight: 700;
     color: #3f3f46;
     margin-top: 0.75rem;
     margin-bottom: 0.5rem;
+  }
+
+  .dark .prose h3 {
+    color: #d4d4d8;
   }
   
   .prose li {

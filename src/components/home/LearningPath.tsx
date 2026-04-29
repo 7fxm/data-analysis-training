@@ -44,10 +44,10 @@ export function LearningPath() {
     <section className="py-20 relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold text-surface-800 mb-4">
+          <h2 className="text-3xl font-bold text-primary-700 dark:text-primary-400 mb-4">
             循序渐进的学习路径
           </h2>
-          <p className="text-surface-500 max-w-2xl mx-auto">
+          <p className="text-surface-500 dark:text-surface-400 max-w-2xl mx-auto">
             按照科学的学习路径，逐步掌握数据分析核心技能
           </p>
         </div>
@@ -56,7 +56,7 @@ export function LearningPath() {
           {learningStages.map((stage, index) => (
             <div
               key={stage.id}
-              className="group relative bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden hover-lift"
+              className="group relative bg-white dark:bg-surface-800 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden border border-surface-100 dark:border-surface-700 hover:-translate-y-1"
               style={{ animationDelay: `${index * 100}ms` }}
             >
               <div className={`absolute top-0 left-0 right-0 h-1 bg-gradient-to-r ${stage.gradient}`} />
@@ -66,20 +66,20 @@ export function LearningPath() {
                   <div className={`flex items-center justify-center w-10 h-10 rounded-xl bg-gradient-to-br ${stage.gradient} text-white font-bold text-sm shadow-lg ${stage.shadow}`}>
                     {index + 1}
                   </div>
-                  <h3 className="font-bold text-surface-800 group-hover:text-primary-600 transition-colors">{stage.title}</h3>
+                  <h3 className="font-bold text-surface-800 dark:text-surface-200 group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors">{stage.title}</h3>
                 </div>
                 
-                <p className="text-sm text-surface-400 mb-2">
-                  对应项目：<span className="text-surface-600">{stage.projects}</span>
+                <p className="text-sm text-surface-400 dark:text-surface-500 mb-2">
+                  对应项目：<span className="text-surface-600 dark:text-surface-300">{stage.projects}</span>
                 </p>
-                <p className="text-sm text-surface-500 mb-4">
+                <p className="text-sm text-surface-500 dark:text-surface-400 mb-4">
                   {stage.goal}
                 </p>
                 
                 <div className="space-y-2">
-                  <p className="text-xs font-semibold text-surface-400 uppercase tracking-wider">核心技能</p>
+                  <p className="text-xs font-semibold text-surface-400 dark:text-surface-500 uppercase tracking-wider">核心技能</p>
                   {stage.skills.map((skill, i) => (
-                    <div key={i} className="flex items-center gap-2 text-sm text-surface-600">
+                    <div key={i} className="flex items-center gap-2 text-sm text-surface-600 dark:text-surface-300">
                       <CheckCircle className="w-4 h-4 text-emerald-500" />
                       <span>{skill}</span>
                     </div>
