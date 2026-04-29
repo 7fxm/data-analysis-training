@@ -1,11 +1,6 @@
-import { useAppStore } from '@/context/AppContext';
-import { Sparkles, TrendingUp, Users, Zap } from 'lucide-react';
+import { Sparkles, TrendingUp, Users, Zap, BarChart3, Database, Code } from 'lucide-react';
 
 export function HeroSection() {
-  const getCompletedCount = useAppStore((state) => state.getCompletedCount);
-  const completedCount = getCompletedCount();
-  const progress = (completedCount / 10) * 100;
-
   const features = [
     { icon: Sparkles, label: '零基础友好', color: 'from-primary-400 to-primary-500' },
     { icon: TrendingUp, label: '真实数据集', color: 'from-accent-400 to-accent-500' },
@@ -67,42 +62,21 @@ export function HeroSection() {
           </div>
           
           <div className="flex justify-center animate-slide-up">
-            <div className="relative">
-              <div className="absolute inset-0 bg-gradient-to-br from-primary-500/20 to-accent-500/20 rounded-full blur-2xl" />
-              <div className="relative p-8 rounded-full bg-gradient-to-br from-surface-800 to-surface-900 border border-white/10">
-                <svg className="w-48 h-48 transform -rotate-90">
-                  <circle
-                    cx="96"
-                    cy="96"
-                    r="88"
-                    stroke="currentColor"
-                    strokeWidth="8"
-                    fill="transparent"
-                    className="text-surface-700"
-                  />
-                  <circle
-                    cx="96"
-                    cy="96"
-                    r="88"
-                    stroke="url(#progressGradient)"
-                    strokeWidth="8"
-                    fill="transparent"
-                    strokeDasharray={553}
-                    strokeDashoffset={553 - (553 * progress) / 100}
-                    className="transition-all duration-1000"
-                    strokeLinecap="round"
-                  />
-                  <defs>
-                    <linearGradient id="progressGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                      <stop offset="0%" stopColor="#0ea5e9" />
-                      <stop offset="100%" stopColor="#d946ef" />
-                    </linearGradient>
-                  </defs>
-                </svg>
-                <div className="absolute inset-0 flex flex-col items-center justify-center">
-                  <span className="text-5xl font-bold text-white">{completedCount}</span>
-                  <span className="text-surface-400 text-sm mt-1">/10 练习完成</span>
-                </div>
+            <div className="relative grid grid-cols-3 gap-4">
+              <div className="p-6 rounded-2xl bg-gradient-to-br from-primary-500/20 to-primary-600/10 border border-primary-500/30 hover:scale-105 transition-transform">
+                <BarChart3 className="w-10 h-10 text-primary-400 mb-3" />
+                <p className="text-white font-bold text-lg">10</p>
+                <p className="text-surface-400 text-sm">实战项目</p>
+              </div>
+              <div className="p-6 rounded-2xl bg-gradient-to-br from-accent-500/20 to-accent-600/10 border border-accent-500/30 hover:scale-105 transition-transform">
+                <Database className="w-10 h-10 text-accent-400 mb-3" />
+                <p className="text-white font-bold text-lg">8</p>
+                <p className="text-surface-400 text-sm">知识点文档</p>
+              </div>
+              <div className="p-6 rounded-2xl bg-gradient-to-br from-emerald-500/20 to-emerald-600/10 border border-emerald-500/30 hover:scale-105 transition-transform">
+                <Code className="w-10 h-10 text-emerald-400 mb-3" />
+                <p className="text-white font-bold text-lg">100</p>
+                <p className="text-surface-400 text-sm">测试题目</p>
               </div>
             </div>
           </div>
