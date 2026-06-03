@@ -60,8 +60,8 @@ export function ProjectGrid() {
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-6">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 -mt-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
           {projects.map((project) => {
             const levelStyle = levelStyles[project.level];
             const IconComponent = projectIcons[project.title] || BarChart3;
@@ -78,6 +78,9 @@ export function ProjectGrid() {
                       <IconComponent className="w-6 h-6 text-primary-600 dark:text-primary-400" />
                     </div>
                     <div className="flex items-center gap-2">
+                      <span className="text-xs font-bold text-white bg-gradient-to-r from-primary-500 to-accent-500 px-2.5 py-1 rounded-lg shadow-sm">
+                        项目{project.id}
+                      </span>
                       <span className={`text-xs font-medium px-2 py-0.5 rounded-full ${levelStyle.bg} ${levelStyle.text} border ${levelStyle.border}`}>
                         {project.level}
                       </span>
