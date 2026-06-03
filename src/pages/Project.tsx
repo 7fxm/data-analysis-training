@@ -2,7 +2,7 @@ import { useParams, Link } from 'react-router-dom';
 import { FileText, Play, ArrowLeft } from 'lucide-react';
 import { projects } from '@/data/projects';
 import { ProjectIntro } from '@/components/project/ProjectIntro';
-import { CodeEditor } from '@/components/project/CodeEditor';
+import { JupyterEditor } from '@/components/project/JupyterEditor';
 import { KnowledgePanel } from '@/components/project/KnowledgePanel';
 import { Button } from '@/components/common/Button';
 import { useAppStore } from '@/context/AppContext';
@@ -60,7 +60,7 @@ export function Project() {
                 <h2 className="text-xl font-bold">代码练习</h2>
               </div>
               <div className="p-4">
-                <CodeEditor
+                <JupyterEditor
                   initialCode={project.codeTemplate}
                   onCodeChange={handleCodeChange}
                   savedCode={savedCode}
