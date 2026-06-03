@@ -55,7 +55,7 @@ export function Project() {
           <div className="lg:col-span-2 space-y-6">
             <ProjectIntro project={project} />
             
-            <div className="bg-white rounded-2xl shadow-lg overflow-hidden">
+            <div className="bg-white dark:bg-surface-800 rounded-2xl shadow-lg overflow-hidden">
               <div className="bg-gradient-to-r from-surface-800 to-surface-900 text-white px-6 py-5">
                 <h2 className="text-xl font-bold">代码练习</h2>
               </div>
